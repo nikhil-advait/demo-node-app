@@ -16,12 +16,48 @@ const signupUserSchema = baseUserSchema.append({
 });
 
 
-// Following routes don't need authentication.
+/**
+ * @api {post} /users/signup Creates the user
+ * @apiVersion 1.0.0
+ * @apiName SignupUser
+ * @apiGroup users
+ * @apiDescription Create the user.
+ *
+ * @apiParam (Body Params) {string} username The unique username for the user.
+ * @apiParam (Body Params) {string} password The password for the user.
+ * @apiParam (Body Params) {string} [name] The optional name of the user.
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * HTTP/1.1 201 CREATED
+    "User created"
 
-// /users/signup route
+ * @apiError (Error 400) BadRequest Missing required request data or invalid data provided.
+ * @apiError (Error 500) InternalServerError The service was not initialized properly or an unexpected error occurred.
+ */
 userRouter.post('/signup', helpers.validateReqBody(signupUserSchema), controller.signup);
 
-// /users/signin route
+
+/**
+ * @api {post} /users/signin Signins the user.
+ * @apiVersion 1.0.0
+ * @apiName SigninUser
+ * @apiGroup users
+ * @apiDescription Sign ins the user and returns sessionToken.
+ *
+ * @apiParam (Body Params) {string} username The unique username for the user.
+ * @apiParam (Body Params) {string} password The password for the user.
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * HTTP/1.1 200 SUCCESS
+    {
+        "sessionToken": "dsf432l23432lsfsd34"
+    }
+
+ * @apiError (Error 400) BadRequest Missing required request data or invalid data provided.
+ * @apiError (Error 401) Unauthorized The call was made by an unauthorized user.
+ * @apiError (Error 404) NotFound The username provides was not found.
+ * @apiError (Error 500) InternalServerError The service was not initialized properly or an unexpected error occurred.
+ */
 userRouter.post('/signin', helpers.validateReqBody(baseUserSchema), controller.signin);
 
 

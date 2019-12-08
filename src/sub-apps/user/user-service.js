@@ -15,7 +15,15 @@ const createUser = async (user) => {
     return userWithoutPassoword;
 };
 
+// Example of jsdoc comment. Should be provided for all functions if not using typescript.
+// Here not creating jsdoc comments for other functions but only for this one to demostrate.
 
+/**
+ * Queries all the teachers with the specified ids.  Throws an error if it didn't find all the teachers.
+ *
+ * @param {object} userQueryObj The object containing query params for querying user.
+ * @returns {Promise<object>} The user in the data store
+ */
 const findUser = async (userQueryObj) => {
     return users[userQueryObj.username];
 };

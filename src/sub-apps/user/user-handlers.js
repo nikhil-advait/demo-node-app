@@ -19,9 +19,20 @@ exports.signupHandler = async (user) => {
     // Giving rounds to hash function to keep things simple.
     user.password = await bcrypt.hash(user.password, 10);
     await userSV.createUser(user);
-}
+};
 
 
+
+// Example of jsdoc comment. Should be provided for all functions if not using typescript.
+// Here not creating jsdoc comments for other functions but only for this one to demostrate.
+
+/**
+ * Queries all the teachers with the specified ids.  Throws an error if it didn't find all the teachers.
+ *
+ * @param {object} user The user object given by the api caller with username and password.
+ * @returns {Promise<string>} The session token to be used for login.
+ * @throws Throws CustomErrors with 404 and 401 error codes
+ */
 exports.signinHandler = async (user) => {
     const userInDb = await userSV.findUser({ username: user.username });
 
@@ -45,4 +56,4 @@ exports.signinHandler = async (user) => {
     await sessionsSV.createSession(sessionToken, userInDb);
 
     return sessionToken;
-}
+};

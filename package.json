@@ -5,7 +5,9 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "test"
+    "test": "test",
+    "build:apidocs": "apidoc -i src/sub-apps -o apidocs/ ",
+    "build:jsdocs": "jsdoc -c ./jsdoc-conf.js"
   },
   "author": "Nikhil Yeole",
   "license": "ISC",
@@ -15,5 +17,18 @@
     "express": "^4.17.1",
     "joi": "^14.3.1",
     "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "apidoc": "^0.19.0",
+    "jsdoc": "^3.6.3"
+  },
+  "apidoc": {
+    "name": "Demo-express-app",
+    "version": "0.1.0",
+    "description": "Demo-express-app",
+    "apidoc": {
+      "title": "Demo-express-app",
+      "url": "https://api.github.com/v1"
+    }
   }
 }
