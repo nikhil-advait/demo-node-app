@@ -1,8 +1,8 @@
 const express = require('express');
-const usersRouter = express.Router();
+const userRouter = express.Router();
 const joi = require('joi');
-const controller = require('./users-controller');
-const helpers = require('../../utils/helpers');
+const controller = require('./user-controller');
+const helpers = require('../../common/helpers');
 
 // Use joi validation to sanitize data at the entry point itself.
 // Can use other libraries which are similar to joi but are more performant.
@@ -19,10 +19,10 @@ const signupUserSchema = baseUserSchema.append({
 // Following routes don't need authentication.
 
 // /users/signup route
-usersRouter.post('/signup', helpers.validateReqBody(signupUserSchema), controller.signup);
+userRouter.post('/signup', helpers.validateReqBody(signupUserSchema), controller.signup);
 
 // /users/signin route
-usersRouter.post('/signin', helpers.validateReqBody(baseUserSchema), controller.signin);
+userRouter.post('/signin', helpers.validateReqBody(baseUserSchema), controller.signin);
 
 
-module.exports = usersRouter;
+module.exports = userRouter;

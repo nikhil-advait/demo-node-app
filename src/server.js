@@ -2,8 +2,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-// import /users/index.js
-const usersRouter = require('./sub-apps/users/routes');
+const userSubApp = require('./sub-apps/user/routes');
+const stockSubApp = require('./sub-apps/stock/routes');
 
 const app = express();
 
@@ -11,28 +11,21 @@ const app = express();
 app.use(bodyParser.json());
 
 // mount users sub-app on main app on '/users' route.
-app.use('/users', usersRouter);
+app.use('/users', userSubApp);
+
+// mount users sub-app on main app on '/users' route.
+app.use('/stocks', stockSubApp);
 
 
 
-// Add global error handler
-app.use((err, req, res, next) => {
+// In real app port would be passed through configuration.
+app.listen(3001, () => {
+    console.log('App started on port 3001');
+});
 
-    // res.processedError will be set from express routes (sub apps) if it is handled there.
-    if (!res.processedError) {
-        console.error(`ERROR!!!...caught in global error handler in route ${req.path}:`, err)
-    }
 
-    // pass error flow to default express error handler.
-    next(err)
-})
-
+// Safety net to handle unhandled promises here. May be do process.exit() after logging.
 process.on('unhandledRejection', (reason, p) => {
     console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
     // application specific logging, throwing an error, or other logic here
-});
-
-// In real app port would be passed through configuration.
-app.listen(3001, () =>{
-    console.log('App started on port 3001');
 });
