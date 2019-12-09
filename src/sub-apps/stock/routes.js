@@ -39,6 +39,7 @@ stockRouter.post('/', helpers.validateReqBody(stockSchema), controller.storeStoc
  * @apiName getAverage
  * @apiGroup stocks
  * @apiDescription The authenticated api to get avg of recent 10 ticker entries of given ticker.
+ * @apiHeader {string} x-auth Authorization token that we get back from /signin api.
  *
  * @apiParam (Route Params) {string} tickerSymbol The unique ticker symbol for the stock.
  *

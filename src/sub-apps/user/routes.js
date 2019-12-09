@@ -42,7 +42,7 @@ userRouter.post('/signup', helpers.validateReqBody(signupUserSchema), controller
  * @apiVersion 1.0.0
  * @apiName SigninUser
  * @apiGroup users
- * @apiDescription Sign ins the user and returns sessionToken.
+ * @apiDescription Signins the user and returns sessionToken.
  *
  * @apiParam (Body Params) {string} username The unique username for the user.
  * @apiParam (Body Params) {string} password The password for the user.
