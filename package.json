@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "test",
+    "test": "jest --silent",
     "build:apidocs": "apidoc -i src/sub-apps -o apidocs/ ",
     "build:jsdocs": "jsdoc -c ./jsdoc-conf.js"
   },
@@ -19,8 +19,12 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/supertest": "^2.0.8",
     "apidoc": "^0.19.0",
-    "jsdoc": "^3.6.3"
+    "jest": "^24.9.0",
+    "jsdoc": "^3.6.3",
+    "supertest": "^4.0.2"
   },
   "apidoc": {
     "name": "Demo-express-app",
@@ -30,5 +34,11 @@
       "title": "Demo-express-app",
       "url": "https://api.github.com/v1"
     }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
