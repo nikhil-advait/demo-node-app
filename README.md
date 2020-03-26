@@ -28,7 +28,7 @@ So this monolith can be easily converted to microservices in future, if required
 - "$npm run build:jsdocs" to generate jsdocs in jsdocs directory". Have put jsdoc comments only for few functions to demonstrate.
 - Validation of apis is done with "joi".
 - "$npm run build:apidocs" to generate api documentation.  Made use of https://apidocjs.com/. New apidocs directory will be created.
-- Please check this directory to see how to call apis. "postman-export" directory has exported apis which can be imported in postman and tested.
+- "postman-export" directory has exported apis which can be imported in Postman and tested.
 Apis are listed below in short:
 ```
 1.
