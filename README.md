@@ -21,7 +21,7 @@ Create a node/express app with:
 - Creted/tested with node 12 but should work with node 10 too.
 - I have used async-await but I am good with promises too.
 - Created decoupled components(subapps / nested apps) to have separation on concerns. 'sub-apps' directory has nested mini apps.
-So this monolith can be easily converted to microservices in future, if required. Any sub-app should only import service from other sub-app.
+So this monolith can be easily converted to microservices in future, if required. Any sub-app should only import "service" (and nothing else) from other sub-app.
 - "$npm start" to start app.
 - "$npm test" to run tests.
 - Created integration and unit tests only for few functions to demonstrate.
